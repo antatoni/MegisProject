@@ -23,6 +23,12 @@
       "email": "tester@abv.bg",
       "password": "00000000",
       "id": "_h5RZiXgDFs"
+    },
+    {
+      "name": "tester2",
+      "email": "testing2@abv.bg",
+      "password": "00000000",
+      "id": "5PZcbBE_Gwo"
     }
   ],
   "posts": [

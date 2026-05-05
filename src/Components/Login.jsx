@@ -39,7 +39,7 @@ const Login = () => {
         return;
       }
 
-      login(foundUser);
+      login(foundUser[0]);
       navigate('/posts');
     } catch (error) {
       console.error(`Failed to fetch user with email:${email}`);
