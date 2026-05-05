@@ -34,7 +34,7 @@ const Login = () => {
         alert(`User with that email not found!`);
         return;
       }
-      if (foundUser.password != password) {
+      if (foundUser[0].password != password) {
         alert(`Password incorrect!`);
         return;
       }
