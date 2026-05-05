@@ -40,7 +40,7 @@ const Login = () => {
       }
 
       login(foundUser);
-      navigate('/dashboard');
+      navigate('/posts');
     } catch (error) {
       console.error(`Failed to fetch user with email:${email}`);
     } finally {

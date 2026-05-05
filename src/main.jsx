@@ -9,14 +9,22 @@ import './index.css';
 import App from './App.jsx';
 import Register from './Components/Register.jsx';
 import Login from './Components/Login.jsx';
-import Dashboard from './Components/Dashboard.jsx';
 import { SessionProvider } from './Components/Context/SessionStorage.jsx';
+import Posts from './Components/Posts.jsx';
+import ProtectedRoute from './Components/ProtectedRoute.jsx';
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> },
   { path: '/register', element: <Register /> },
   { path: '/login', element: <Login /> },
-  { path: '/dashboard', element: <Dashboard /> },
+  {
+    path: '/posts',
+    element: (
+      <ProtectedRoute>
+        <Posts />
+      </ProtectedRoute>
+    ),
+  },
 ]);
 
 createRoot(document.getElementById('root')).render(
