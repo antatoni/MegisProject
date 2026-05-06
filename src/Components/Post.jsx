@@ -19,29 +19,8 @@ const Post = ({ post }) => {
       console.error(`Problem with fetching userdata!`);
     }
   };
-  const getComments = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `http://localhost:3001/comments?postId=${post.id}`,
-      );
-
-      const comments = await response.json();
-      if (comments.length === 0) {
-        return;
-      } else {
-        setComments(comments);
-      }
-    } catch (error) {
-      console.error(`Failed to fetch comments`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
     getPostUser();
-    getComments();
   }, [post.id, post.userId]);
   return (
     <article className="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-lg backdrop-blur">
@@ -53,28 +32,6 @@ const Post = ({ post }) => {
       </header>
 
       <p className="mt-3 text-slate-700">{post.content}</p>
-
-      <div className="mt-6">
-        <div className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-          Comments
-        </div>
-        {loading ? (
-          <p className="mt-3 text-sm text-slate-500">Loading comments...</p>
-        ) : comments.length === 0 ? (
-          <p className="mt-3 text-sm text-slate-500">No comments yet.</p>
-        ) : (
-          <ul className="mt-3 space-y-2">
-            {comments.map((comment) => (
-              <li
-                key={comment.id}
-                className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
-              >
-                {comment.text}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </article>
   );
 };
